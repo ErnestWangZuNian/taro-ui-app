@@ -1,0 +1,20 @@
+.form-item-container {
+  .content-item-container {
+    position: relative;
+    .required-mask {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      color: red;
+      margin-left: 10px;
+    }
+  }
+  .error-item-container {
+    color: red;
+    font-size: 32px;
+    padding-left: 32px;
+  }
+}
