@@ -4,6 +4,7 @@ import "./index.scss";
 import { AtInput, AtButton, AtRadio } from "taro-ui";
 import FormItem from "../../components/form-item";
 import Validator from "../../components/form-item/validator";
+import Api from "../../api";
 
 class Index extends Component {
   constructor(props) {
@@ -24,7 +25,12 @@ class Index extends Component {
 
   componentWillMount() {}
 
-  componentDidMount() {}
+  async componentDidMount() {
+    const res = Taro.request({
+      url: "https://api.apiopen.top/getJoke",
+    });
+    console.log(res);
+  }
 
   componentWillUnmount() {}
 
@@ -49,7 +55,6 @@ class Index extends Component {
 
   render() {
     const { mobile, email, idCard, radio, select } = this.state;
-    console.log(radio, "1211");
     return (
       <View className='index'>
         <FormItem
@@ -111,7 +116,7 @@ class Index extends Component {
           <View>
             <Picker
               mode='selector'
-              range={['美国','日本']}
+              range={["美国", "日本"]}
               onChange={this.changeInput.bind(this, "select")}
             >
               <View className='picker'>当前选择：{select}</View>

@@ -3,6 +3,7 @@ import { View, Text } from "@tarojs/components";
 import Util from "wzn-utils";
 import "./index.scss";
 
+
 class FormItem extends Component {
   static defaultProps = {};
 
@@ -40,7 +41,6 @@ class FormItem extends Component {
         }
       });
     }
-    console.log(fileInfo, "wwwww");
     return (
       <View className='form-item-container'>
         <View className='content-item-container'>
