@@ -1,6 +1,6 @@
 import Taro, { Component } from "@tarojs/taro";
 import "taro-ui/dist/style/index.scss";
-import Index from "./pages/index";
+import Index from "./pages/home/index";
 
 import "./app.scss";
 
@@ -16,7 +16,11 @@ if (process.env.TARO_ENV !== "alipay") {
 
 class App extends Component {
   config = {
-    pages: ["pages/index/index"],
+    pages: [
+      "pages/home/index",
+      "pages/swipe-code/index",
+      "pages/my-ticket/index"
+    ],
     window: {
       backgroundTextStyle: "light",
       navigationBarBackgroundColor: "#fff",

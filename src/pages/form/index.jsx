@@ -1,10 +1,9 @@
 import Taro, { Component } from "@tarojs/taro";
 import { View, Picker } from "@tarojs/components";
-import "./index.scss";
-import { AtInput, AtButton, AtRadio } from "taro-ui";
+import "./style.scss";
+import { AtInput, AtButton, AtRadio, AtTabBar } from "taro-ui";
 import FormItem from "../../components/form-item";
 import Validator from "../../components/form-item/validator";
-import Api from "../../api";
 
 class Index extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ class Index extends Component {
 
   async componentDidMount() {
     const res = Taro.request({
-      url: "https://api.apiopen.top/getJoke",
+      url: "https://api.apiopen.top/getJoke"
     });
     console.log(res);
   }
@@ -53,10 +52,23 @@ class Index extends Component {
     });
   }
 
+  // 切换tab
+  handleClick(value){
+   console.log(value, '21111');
+  }
+
   render() {
     const { mobile, email, idCard, radio, select } = this.state;
     return (
       <View className='index'>
+        <AtTabBar
+          fixed
+          tabList={[
+            { title: "扫码缴费",  iconType: 'camera' },
+            { title: "我的票据", iconType: 'bullet-list'},
+          ]}
+          onClick={this.handleClick.bind(this)}
+        />
         <FormItem
           getFiledInfo={this.validator.getFiledInfo("mobile", {
             value: mobile,
