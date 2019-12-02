@@ -8,14 +8,16 @@ import "./style.scss";
 class IconButton extends Component {
 
   static defaultProps = {
-    size: 20,
+    size: 24,
+    isAt: false,
     onClick: () => null
   };
 
   static propTypes = {
     onClick: PropTypes.func,
     value: PropTypes.string.isRequired,
-    size: PropTypes.string
+    size: PropTypes.string,
+    isAt: PropTypes.bool
   };
 
   constructor(props) {
@@ -42,11 +44,11 @@ class IconButton extends Component {
   }
 
   render() {
-    const { value, size } = this.props;
+    const { value, size, isAt } = this.props;
     return (
       <View className='icon-button-container' onClick={this.handleClick.bind(this)}>
         <View className="icon-container">
-          <AtIcon prefixClass='icon' value={value} size={size}></AtIcon>
+          <AtIcon prefixClass={isAt ? 'at-icon' : 'icon'} value={value} size={size}></AtIcon>
         </View>
         <View className='text-container'>
           {this.props.children}
