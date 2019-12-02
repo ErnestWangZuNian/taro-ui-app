@@ -1,6 +1,7 @@
 import Taro, { Component } from "@tarojs/taro";
 import { View } from "@tarojs/components";
 import { AtIcon } from "taro-ui";
+import IconButton from '../../../components/icon-button';
 import "./style.scss";
 
 class SwipeCode extends Component {
@@ -8,26 +9,29 @@ class SwipeCode extends Component {
     super(props);
     this.state = {};
   }
-  config = {
-    navigationBarTitleText: "扫码"
-  };
 
-  componentWillMount() {}
+  componentWillMount() { }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
-  componentWillUnmount() {}
+  componentWillUnmount() { }
 
-  componentDidShow() {}
+  componentDidShow() { }
 
-  componentDidHide() {}
+  componentDidHide() { }
+
+  // 扫码
+  async swipeCode() {
+    const res = await Taro.scanCode();
+    console.log(res, 'wwww');
+  }
 
   render() {
     return (
       <View className='swipe-code-container'>
         <View className='top-container'>
           <View className='btn-container'>
-            <AtIcon prefixClass='icon' value='scan'></AtIcon>扫码缴费
+            <IconButton value="scan" onClick={this.swipeCode.bind(this)}>扫码缴费</IconButton>
           </View>
         </View>
       </View>
