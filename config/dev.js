@@ -2,8 +2,22 @@ module.exports = {
   env: {
     NODE_ENV: '"development"'
   },
-  defineConstants: {
+  defineConstants: {},
+  weapp: {
+    module: {
+      postcss: {
+        autoprefixer: {
+          enable: true
+        },
+        // 小程序端样式引用本地资源内联配置
+        url: {
+          enable: true,
+          config: {
+            limit: 1024 * 1 * 10 * 10 // 文件大小限制
+          }
+        }
+      }
+    }
   },
-  weapp: {},
   h5: {}
-}
+};

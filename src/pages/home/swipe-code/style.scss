@@ -1,0 +1,21 @@
+@import "../../../app.scss";
+.swipe-code-container {
+  .top-container {
+    background: url("./bg.png") no-repeat center center;
+    background-size: cover;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .btn-container {
+      color: $primaryColor;
+      height: 96px;
+      background-color: $white;
+      width: 540px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

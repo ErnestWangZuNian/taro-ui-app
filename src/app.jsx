@@ -1,8 +1,9 @@
 import Taro, { Component } from "@tarojs/taro";
 import "taro-ui/dist/style/index.scss";
+
 import Index from "./pages/home/index";
 
-import "./app.scss";
+import "../iconfont.scss";
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -16,11 +17,7 @@ if (process.env.TARO_ENV !== "alipay") {
 
 class App extends Component {
   config = {
-    pages: [
-      "pages/home/index",
-      "pages/swipe-code/index",
-      "pages/my-ticket/index"
-    ],
+    pages: ["pages/home/index"],
     window: {
       backgroundTextStyle: "light",
       navigationBarBackgroundColor: "#fff",

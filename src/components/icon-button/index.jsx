@@ -1,8 +1,9 @@
 import Taro, { Component } from "@tarojs/taro";
 import { View } from "@tarojs/components";
+import { AtIcon } from "taro-ui";
 import "./style.scss";
 
-class SwipeCode extends Component {
+class IconButton extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -22,7 +23,15 @@ class SwipeCode extends Component {
   componentDidHide() {}
 
   render() {
-    return <View className='swipe-code-container'>扫码</View>;
+    return (
+      <View className='icon-button-container'>
+        <View className='top-container'>
+          <View className='btn-container'>
+            <AtIcon prefixClass='icon' value='scan'></AtIcon>扫码缴费
+          </View>
+        </View>
+      </View>
+    );
   }
 }
-export default SwipeCode;
+export default IconButton;

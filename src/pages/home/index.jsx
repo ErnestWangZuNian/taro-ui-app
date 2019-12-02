@@ -1,9 +1,10 @@
 import Taro, { Component } from "@tarojs/taro";
 import { View } from "@tarojs/components";
-import "./style.scss";
 import { AtTabBar } from "taro-ui";
-import SwipeCode from "../swipe-code";
-import Myticket from "../my-ticket";
+import MyTicket from "./my-ticket";
+import SwipeCode from "./swipe-code";
+
+import "./style.scss";
 
 class Home extends Component {
   constructor(props) {
@@ -11,15 +12,28 @@ class Home extends Component {
     this.state = {
       currentTab: 0
     };
+    this.tabList = [
+      { title: "扫码缴费", iconType: "camera" },
+      { title: "我的票据", iconType: "bullet-list" }
+    ];
+    this.handleClick = this.handleClick.bind(this);
   }
-  config = {
-    navigationBarTitleText: "首页"
-  };
 
   componentWillMount() {}
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { currentTab } = this.state;
+    Taro.setNavigationBarTitle({
+      title: this.tabList[currentTab].title
+    });
+  }
 
+  componentDidUpdate() {
+    const { currentTab } = this.state;
+    Taro.setNavigationBarTitle({
+      title: this.tabList[currentTab].title
+    });
+  }
   componentWillUnmount() {}
 
   componentDidShow() {}
@@ -28,18 +42,6 @@ class Home extends Component {
 
   // 切换tab
   handleClick(value) {
-    switch (value) {
-      case 1:
-        Taro.navigateTo({
-          url: "/pages/my-ticket/index"
-        });
-        break;
-      default:
-        Taro.navigateTo({
-          url: "/pages/swipe-code/index"
-        });
-        break;
-    }
     this.setState({
       currentTab: value
     });
@@ -52,12 +54,11 @@ class Home extends Component {
         <AtTabBar
           fixed
           current={currentTab}
-          tabList={[
-            { title: "扫码缴费", iconType: "camera" },
-            { title: "我的票据", iconType: "bullet-list" }
-          ]}
-          onClick={this.handleClick.bind(this)}
+          tabList={this.tabList}
+          onClick={this.handleClick}
         />
+        {currentTab === 0 ? <SwipeCode /> : null}
+        {currentTab === 1 ? <MyTicket /> : null}
       </View>
     );
   }
