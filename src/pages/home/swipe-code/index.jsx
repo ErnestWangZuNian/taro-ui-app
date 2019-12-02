@@ -22,8 +22,13 @@ class SwipeCode extends Component {
 
   // 扫码
   async swipeCode() {
-    const res = await Taro.scanCode();
-    console.log(res, 'wwww');
+    try {
+      const login = await Taro.getUserInfo();
+      const res = await Taro.scanCode();
+      console.log(res,login, 'wwww');
+    } catch (error) {
+      console.log(error, 'wwww');
+    }
   }
 
   render() {
