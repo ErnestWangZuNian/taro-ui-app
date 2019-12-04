@@ -3,7 +3,7 @@ import "taro-ui/dist/style/index.scss";
 
 import Index from "./pages/home/index";
 
-import "../style/iconfont.scss";
+import "./style/iconfont.scss";
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
